@@ -17,6 +17,7 @@ public class Main {
 
         Scenarios.beginningScenario();
         Game.selectHero(assassin,tank,archer);
+        System.out.println("okfjxsıosdjf");
         
 
 
