@@ -1,15 +1,19 @@
 package com.company;
 
 class Rooms {
+    private Hero hero;
     private String roomName;
     private Door RoomDoor;
     private Stairs stairs;
     private boolean hasStairs;
+Hero selectedHero = Game.selectedHero;
 
     public Rooms(String name, Door door) {
         roomName = name;
         RoomDoor = door;
+        hero =selectedHero;
     }
+
 
 
     public Rooms(String name) {

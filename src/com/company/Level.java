@@ -29,15 +29,7 @@ public class Level {
         return roomsInLevel.get(i - 1);
     }
 
-    public static void addStairs() {
-        LinkedList<Level> levels = generateLevels();
-        SecureRandom random = new SecureRandom();
-        int stairDoor = random.nextInt(numberOfRoomsInACorridor);
-        for (int i = 0; i < levels.size(); i++) {
-            if (i + 1 < levels.size())
-                levels.get(i).roomsInLevel.get(stairDoor).setStairs(levels.get(i + 1).roomsInLevel.get(random.nextInt(numberOfRoomsInACorridor)).getStairs());
-        }
-    }
+
 
     public static LinkedList<Level> generateLevels() {
         LinkedList<Level> levels = new LinkedList<>();
@@ -54,7 +46,12 @@ public class Level {
 
             levels.add(new Level(i, roomsInLevel));
         }
-        addStairs();
+        SecureRandom random = new SecureRandom();
+        int stairDoor = random.nextInt(numberOfRoomsInACorridor);
+        for (int i = 0; i < levels.size(); i++) {
+            if (i + 1 < levels.size())
+                levels.get(i).roomsInLevel.get(stairDoor).setStairs(levels.get(i + 1).roomsInLevel.get(random.nextInt(numberOfRoomsInACorridor)).getStairs());
+        }
         return levels;
     }
 
