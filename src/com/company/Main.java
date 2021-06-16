@@ -16,10 +16,14 @@ public class Main {
         Archer archer=new Archer(800,3,300,15,"Archer");
 
         Scenarios.beginningScenario();
-        Game.selectHero(assassin,tank,archer);
-        Game.startGame();
+        Hero selectedHero=Game.selectHero(assassin,tank,archer);
+         Game.startGame();
 
-        
+while(selectedHero.getHealthPoints()!=0){
+    Game.actions();
+    Game.choices();
+}
+
 
 
 
