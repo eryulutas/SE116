@@ -1,16 +1,23 @@
 package com.company;
 
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
-    Hero hero;
     static Hero selectedHero = null;
-    static LinkedList<Level> levelsOfGame;
+    static LinkedHashMap<String, ArrayList<Rooms>> levelsOfGame;
     static Assassin assassin;
     static Tank tank;
     static Archer archer;
-    static Level currentLevel;
+
+    public static void setCurrentLevel(Rooms currentLevel) {
+        Game.currentLevel = currentLevel;
+    }
+
+    public static Rooms getCurrentLevel() {
+        return currentLevel;
+    }
+
+    static Rooms currentLevel;
     static Scanner scanner = new Scanner(System.in);
 
 
@@ -57,16 +64,80 @@ public class Game {
     }
 
     public static void startGame() {
-        selectedHero = selectHero(assassin, tank, archer);
-        levelsOfGame = Level.generateLevels();
-        currentLevel=levelsOfGame.getFirst();
+        levelsOfGame = Rooms.generateLevels();
+        setCurrentLevel(levelsOfGame.get("Level-1").get(0));
+    }
+
+    public static void choices() {
+        String selectedAction = scanner.next();
+        System.out.println("\nAction: " + selectedAction);
+        switch (selectedAction) {
+            case "D1":
+                currentLevel = goToNextRoomDoor();
+
+                break;
+            case "D2":
+                currentLevel = comeBackTheRoomDoor();
+                break;
+            case "UP":
+                useStairs();
+                break;
+            case "M1":
+                break;
+            case "M2":
+                break;
+            case "R":
+                break;
+            default:
+                System.out.println("\nInvalid Entry, try again...");
+                actions();
+                break;
+
+        }
+    }
+
+    public static void actions() {
+
+        System.out.println("The hero sees the following.");
+        System.out.println("Go To Next Room Door (D1)");
+        System.out.println("Back To Before Room Door (D2)");
+        System.out.println("Stairs (UP)");
+        System.out.println("Attack To Monster (M1)");
+        System.out.println("Attack To Monster (M2)");
+        System.out.println("Rescue Townspeople (R)");
+        System.out.println("Please select one");
+    }
+
+    public static Rooms goToNextRoomDoor() {
+
+currentLevel= levelsOfGame.get("Level-1").get(1);
+        return getCurrentLevel();
+    }
+
+    public static Rooms comeBackTheRoomDoor() {
+
+       currentLevel=levelsOfGame.get("Level-1").get(0);
+        return getCurrentLevel();
+
+    }
+
+    public static void useStairs() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (getCurrentLevel().getHasStairs()) {
+                    currentLevel = getCurrentLevel().getStairs().upperRoom;
+                    break;
+                }
+            }
+        }
+
     }
 
     public static Hero selectHero(Hero assassin, Hero tank, Hero archer) {
 
         boolean flag = true;
         while (flag) {
-            Game.printSeparator(30);
+            Game.printSeparator(15);
             System.out.println("Enter the number to see details \n1.Assassin \n2.Tank \n3.Archer \n4.I am ready to pick! ");
             Scanner scanner = new Scanner(System.in);
             int input = scanner.nextInt();
@@ -93,13 +164,18 @@ public class Game {
                 case 4:
                     System.out.println("Which do you want to be? \n1.Assassin \n2.Tank \n3.Archer ");
                     int selected = scanner.nextInt();
-                    System.out.println("You chose to start with the " + selected + " class");
                     if (selected == 1) {
                         selectedHero = assassin;
+                        System.out.println("You chose to start with the assassin class");
+
                     } else if (selected == 2) {
                         selectedHero = tank;
+                        System.out.println("You chose to start with the tank class");
+
                     } else {
                         selectedHero = archer;
+                        System.out.println("You chose to start with the archer class");
+
                     }
                     flag = false;
                     break;
