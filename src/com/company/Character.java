@@ -6,7 +6,6 @@ public abstract class Character<T> {
 
 
 
-
     public Character(String name,int healthPoints,int maxHealthPoints,int attackDamage,int attackSpeed){
         this.name=name;
         this.healthPoints=healthPoints;
