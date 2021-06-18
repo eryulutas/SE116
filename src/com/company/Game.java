@@ -72,8 +72,8 @@ public class Game {
         switch (selectedAction) {
             case "D1":
                 currentLevel = goToNextRoomDoor();
-
                 break;
+
             case "D2":
                 currentLevel = comeBackTheRoomDoor();
                 break;
@@ -90,8 +90,8 @@ public class Game {
                 System.out.println("\nInvalid Entry, try again...");
                 actions();
                 break;
-
         }
+
     }
 
     public static void actions() {

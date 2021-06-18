@@ -68,7 +68,7 @@ public class Main {
 
         Scenarios.beginningScenario();
         Hero selectedHero=Game.selectHero(assassin,tank,archer);
-        Game.startGame();
+
 
        /* while (selectedHero.getHealthPoints() != 0) {
             Game.actions();
@@ -93,8 +93,13 @@ public class Main {
 
             tankInv.displayInventory();
 
-
+        Game.startGame();
+        while(selectedHero.getHealthPoints()!=0){
+            Game.actions();
+            Game.choices();
         }
+
+    }
     }
 
 
