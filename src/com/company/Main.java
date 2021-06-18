@@ -94,25 +94,7 @@ public class Main {
             tankInv.displayInventory();
 
 
-
-
-
-
-
-
-
-
-            
         Game.startGame();
-
-
-
-
-
-
-
-
-
 
 
         while(selectedHero.getHealthPoints()!=0){
