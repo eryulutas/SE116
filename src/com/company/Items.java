@@ -5,58 +5,59 @@ import java.util.ArrayList;
 public class Items {
     Hero hero;
     private String name;
-    private String upgradeType;
+
     private int damageUpgradeValue;
     private int speedUpgradeValue;
     private int armorUpgradeValue;
     private int healthUpgradeValue;
+    private int itemWeight;
+    private String mainType;
     private String specialities;
-    private ArrayList<Items> itemList=new ArrayList<Items>();
 
 
-    public Items(String name, String upgradeType, int damageUpgradeValue, int speedUpgradeValue, int armorUpgradeValue, int healthUpgradeValue, String specialities) {
+
+    public Items(String name, int damageUpgradeValue, int speedUpgradeValue, int armorUpgradeValue, int healthUpgradeValue,int itemWeight,String mainType, String specialities) {
         this.name = name;
-        this.upgradeType = upgradeType;
+
         this.damageUpgradeValue = damageUpgradeValue;
         this.speedUpgradeValue = speedUpgradeValue;
         this.armorUpgradeValue = armorUpgradeValue;
         this.healthUpgradeValue = healthUpgradeValue;
+        this.itemWeight=itemWeight;
+        this.mainType=mainType;
         this.specialities = specialities;
 
     }
 
     public Items() {
         this.name = null;
-        this.upgradeType = null;
         this.damageUpgradeValue = 0;
         this.speedUpgradeValue = 0;
         this.armorUpgradeValue = 0;
         this.healthUpgradeValue = 0;
+        this.itemWeight=0;
         this.specialities = null;
+        this.mainType=null;
+
+    }
+
+    public void displayItemInfo(){
+        System.out.println("Name: "+ getName()+ "\nDamage:"+getDamageUpgradeValue()+"\nAttack Speed: "+getSpeedUpgradeValue()+"\nArmor: "+armorUpgradeValue+"Health upgrade: "+getHealthUpgradeValue()+"\nItem weight: "+ getItemWeight());
 
     }
 
 
-    public void upgrade(Items items) {
-        int currentAttackDamage = hero.getAttackDamage() + items.damageUpgradeValue;
-        int currentAttackSpeed = hero.getAttackSpeed() + items.speedUpgradeValue;
-        int currentArmor = hero.getArmor() + items.armorUpgradeValue;
-        int currentHealthPoint = hero.getHealthPoints() + items.healthUpgradeValue;
-        hero.setAttackDamage(currentAttackDamage);
-        hero.setAttackDamage(currentAttackSpeed);
-        hero.setArmor(currentArmor);
-        hero.setHealthPoints(currentHealthPoint);
 
-    }
+
+
+
 
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setUpgradeType(String upgradeType) {
-        this.upgradeType = upgradeType;
-    }
+
 
     public void setDamageUpgradeValue(int damageUpgradeValue) {
         this.damageUpgradeValue = damageUpgradeValue;
@@ -78,7 +79,45 @@ public class Items {
         this.specialities = specialities;
     }
 
-    public void setItemList(ArrayList<Items> itemList) {
-        this.itemList = itemList;
+    public void setItemWeight(int itemWeight) {
+        this.itemWeight = itemWeight;
+    }
+
+    public void setMainType(String mainType) {
+        this.mainType = mainType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+
+    public int getDamageUpgradeValue() {
+        return damageUpgradeValue;
+    }
+
+    public int getSpeedUpgradeValue() {
+        return speedUpgradeValue;
+    }
+
+    public int getArmorUpgradeValue() {
+        return armorUpgradeValue;
+    }
+
+    public int getHealthUpgradeValue() {
+        return healthUpgradeValue;
+    }
+
+    public int getItemWeight() {
+        return itemWeight;
+    }
+
+    public String getSpecialities() {
+        return specialities;
+    }
+
+    public String getMainType() {
+        return mainType;
     }
 }

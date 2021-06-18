@@ -1,78 +1,100 @@
 package com.company;
 
-public abstract class Hero {
+public class Hero extends Character<Monster>{
      public Monster monster;
 
-    private int healthPoints, attackSpeed, attackDamage, armor;
+    private int  armor;
     private String type;
 
-    public Hero(int healthPoints, int attackSpeed, int attackDamage, int armor, String type) {
-        this.healthPoints = healthPoints;
-        this.attackSpeed = attackSpeed;
-        this.attackDamage = attackDamage;
-        this.armor = armor;
-        this.type = type;
+    public int HitPoints=getAttackDamage()*getAttackSpeed();
+
+    public Hero(String name,int healthPoints,int maxHealthPoints,int attackDamage,int attackSpeed, int armor, String type) {
+        super(Scenarios.heroName,healthPoints,maxHealthPoints,attackDamage,attackSpeed);
+        this.armor=armor;
+        this.type=type;
     }
 
 
     public Hero() {
-        this.healthPoints = 0;
-        this.attackSpeed = 0;
-        this.attackDamage = 0;
+
         this.armor = 0;
         this.type = null;
     }
 
-    public int attackToMonster(Monster monster) {
+
+    public int attack(Monster monster) {
         System.out.println("You attacked to monster!");
-        int attackDamage = getAttackDamage();
-        int attackSpeed = getAttackSpeed();
-        int attack = attackDamage * attackSpeed;
-        int currentMonsterHealth=monster.getHealthPoints()-attack;
-        monster.setHealthPoints(currentMonsterHealth);
+        int currentMonsterHealth=monster.getHealthPoints()-HitPoints;
+
+        if(currentMonsterHealth==0){
+            System.out.println("You defeated the monster"+monster.getName());
+            monster.setHealthPoints(0);
+        }
+        else {
+            monster.setHealthPoints(currentMonsterHealth);
+
+        }
         return currentMonsterHealth;
     }
 
-
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
+    @Override
+    public void displayInfo() {
+        Game.printHeading("Your champ details:");
+        System.out.println("Name: "+Scenarios.heroName+"\nType: "+getType()+"\nHealth Points: "+getHealthPoints()+"\nAttack Damage: "+getAttackDamage()+"\nAttack Speed: "+ getAttackSpeed()+"\nArmor: "+getArmor());
     }
 
-    public void setAttackSpeed(int attackSpeed) {
-        this.attackSpeed = attackSpeed;
+    public void upgrade(Hero hero, Items items) {
+        int currentAttackDamage = hero.getAttackDamage() + items.getDamageUpgradeValue();
+        int currentAttackSpeed = hero.getAttackSpeed() + items.getSpeedUpgradeValue();
+        int currentArmor = hero.getArmor() + items.getArmorUpgradeValue();
+        int currentHealthPoint = hero.getHealthPoints() + items.getHealthUpgradeValue();
+        hero.setAttackDamage(currentAttackDamage);
+        hero.setAttackDamage(currentAttackSpeed);
+        hero.setArmor(currentArmor);
+        hero.setHealthPoints(currentHealthPoint);
+
     }
 
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
-    }
+
+
+    //public int attackToMonster(Monster monster) {
+      //  System.out.println("You attacked to monster!");
+        //int attackDamage = getAttackDamage();
+        //int attackSpeed = getAttackSpeed();
+        //int attack = attackDamage * attackSpeed;
+        //int currentMonsterHealth=monster.getHealthPoints()-attack;
+        //if(currentMonsterHealth==0){
+          //  System.out.println("You defeated the monster"+monster.getName());
+            //monster.setHealthPoints(0);
+        //}
+        //else {
+         //   monster.setHealthPoints(currentMonsterHealth);
+
+        //}
+        //return currentMonsterHealth;
+    //}
+
+
+
+
 
     public void setArmor(int armor) {
         this.armor = armor;
-    }
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public int getAttackSpeed() {
-        return attackSpeed;
-    }
-
-    public int getAttackDamage() {
-        return attackDamage;
     }
 
     public int getArmor() {
         return armor;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getType() {
         return type;
     }
 
-    public void displayInfo() {
-        System.out.println("Health Points: " + healthPoints + "\nAttack Speed: " + attackSpeed + "\nAttack Damage: " + attackDamage + "\nArmor: " + armor + "\nType: " + type);
-    }
+
 
 
 

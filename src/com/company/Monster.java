@@ -1,30 +1,38 @@
 package com.company;
 
-public class Monster {
-    public Hero hero;
-    private String name;
-    private int healthPoints, attackSpeed, attackDamage;
-    private String specialities;
+public class Monster extends Character<Hero>{
 
-    public Monster(String name, int healthPoints, int attackSpeed, int attackDamage, String specialities) {
-        this.name = name;
-        this.healthPoints = healthPoints;
-        this.attackSpeed = attackSpeed;
-        this.attackDamage = attackDamage;
-        this.specialities = specialities;
+
+    private String abilities;
+    private Items items;
+
+    public Monster(String name, int healthPoints,int maxHealthPoints, int attackDamage, int attackSpeed, String abilities,Items items) {
+        super(name, healthPoints, maxHealthPoints, attackDamage, attackSpeed);
+        this.abilities = abilities;
+        this.items=items;
+    }
+
+    public Monster(String name, int healthPoints,int maxHealthPoints, int attackDamage, int attackSpeed, String abilities) {
+        super(name, healthPoints, maxHealthPoints, attackDamage, attackSpeed);
+        this.abilities = abilities;
+
     }
 
 
     public Monster() {
-        this.name = null;
-        this.healthPoints = 0;
-        this.attackSpeed = 0;
-        this.attackDamage = 0;
-        this.specialities = null;
+
+        this.abilities = null;
+        this.items=null;
     }
 
+    @Override
+    public void displayInfo() {
+        Game.printHeading("Monster Info");
+        System.out.println("Name: "+getName()+"Health: "+ getMaxHealthPoints()+"Attack Damage: "+getAttackDamage()+"Attack Speed: "+ getAttackSpeed()+"Abilities: "+ getAbilities());
+    }
 
-    public int attackToHero(Hero hero) {
+    @Override
+    public int attack(Hero hero){
         int currentHeroHealth;
         int reducedDamage;
         System.out.println("You have been attacked by monster!");
@@ -47,48 +55,29 @@ public class Monster {
     }
 
 
-    public void setName(String name) {
-        this.name = name;
+
+
+
+
+
+    public void setAbilities(String abilities) {
+        this.abilities = abilities;
     }
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-    public void setAttackSpeed(int attackSpeed) {
-        this.attackSpeed = attackSpeed;
-    }
-
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
-    }
-
-    public void setSpecialities(String specialities) {
-        this.specialities = specialities;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-    public int getAttackSpeed() {
-        return attackSpeed;
-    }
-
-    public int getAttackDamage() {
-        return attackDamage;
-    }
-
-    public String getSpecialities() {
-        return specialities;
+    public void setItems(Items items) {
+        this.items = items;
     }
 
 
-    public void displayInfo() {
-        System.out.println("Health Points: " + healthPoints + "\nAttack Speed: " + attackSpeed + "\nAttack Damage: " + attackDamage  + "\nSpecialities: " + specialities);
+
+    public String getAbilities() {
+        return abilities;
     }
+
+    public Items getItems() {
+        return items;
+    }
+
+
+
 }

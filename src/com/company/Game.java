@@ -3,11 +3,9 @@ package com.company;
 import java.util.*;
 
 public class Game {
-    static Hero selectedHero = null;
+    static Hero selectedHero;
     static LinkedHashMap<String, ArrayList<Rooms>> levelsOfGame;
-    static Assassin assassin;
-    static Tank tank;
-    static Archer archer;
+
 
     public static void setCurrentLevel(Rooms currentLevel) {
         Game.currentLevel = currentLevel;
@@ -132,6 +130,11 @@ currentLevel= levelsOfGame.get("Level-1").get(1);
         }
 
     }
+
+
+
+
+
 
     public static Hero selectHero(Hero assassin, Hero tank, Hero archer) {
 
