@@ -98,7 +98,7 @@ public class Main {
 
 
 
-        
+
         while(selectedHero.getHealthPoints()!=0){
             Game.actions();
             Game.choices();
