@@ -32,9 +32,9 @@ public class Main {
         Items Crossbow = new Items("Cross Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
 
         //Armors
-        Items lightArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items heavyArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items helmet = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items lightArmor = new Items("Light Armor", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items heavyArmor = new Items("Heavy Armor ", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items helmet = new Items("Helmet", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
         Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "boot", "sadasdasd");
 
 
@@ -68,6 +68,15 @@ public class Main {
 
         Scenarios.beginningScenario();
         Hero selectedHero=Game.selectHero(assassin,tank,archer);
+        if (selectedHero==assassin){
+            selectedHero.inventory=assassinInv;
+        }
+        else if(selectedHero==tank){
+            selectedHero.inventory=tankInv;
+        }
+        else {
+            selectedHero.inventory=archerInv;
+        }
         Game.startGame();
 
        /* while (selectedHero.getHealthPoints() != 0) {

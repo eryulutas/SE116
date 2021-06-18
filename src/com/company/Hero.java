@@ -5,6 +5,7 @@ public class Hero extends Character<Monster>{
 
     private int  armor;
     private String type;
+    Inventory inventory;
 
     public int HitPoints=getAttackDamage()*getAttackSpeed();
 
