@@ -42,7 +42,7 @@ public class Items {
     }
 
     public void displayItemInfo(){
-        System.out.println("Name: "+ getName()+ "\nDamage:"+getDamageUpgradeValue()+"\nAttack Speed: "+getSpeedUpgradeValue()+"\nArmor: "+armorUpgradeValue+"Health upgrade: "+getHealthUpgradeValue()+"\nItem weight: "+ getItemWeight());
+        System.out.println("Name: "+ getName()+ "\nDamage:"+getDamageUpgradeValue()+"\nAttack Speed: "+getSpeedUpgradeValue()+"\nArmor: "+armorUpgradeValue+"\nHealth upgrade: "+getHealthUpgradeValue()+"\nItem weight: "+ getItemWeight());
 
     }
 

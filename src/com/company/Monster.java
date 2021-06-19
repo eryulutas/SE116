@@ -28,11 +28,12 @@ public class Monster extends Character<Hero>{
     @Override
     public void displayInfo() {
         Game.printHeading("Monster Info");
-        System.out.println("Name: "+getName()+"Health: "+ getMaxHealthPoints()+"Attack Damage: "+getAttackDamage()+"Attack Speed: "+ getAttackSpeed()+"Abilities: "+ getAbilities());
+        System.out.println("Name: "+getName()+"\nHealth: "+ getMaxHealthPoints()+"\nAttack Damage: "+getAttackDamage()+"\nAttack Speed: "+ getAttackSpeed()+"\nAbilities: "+ getAbilities());
     }
 
     @Override
     public int attack(Hero hero){
+        System.out.println("Monster attacked you.");
         int currentHeroHealth;
         int reducedDamage;
         System.out.println("You have been attacked by monster!");
@@ -50,6 +51,9 @@ public class Monster extends Character<Hero>{
         }
         currentHeroHealth=hero.getHealthPoints()-reducedDamage;
         hero.setHealthPoints(currentHeroHealth);
+
+        hero.displayInfo();
+
         return currentHeroHealth;
 
     }

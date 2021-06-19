@@ -7,6 +7,8 @@ public class Scenarios {
     static String heroName;
     static Inventory inventory;
 
+
+
     public static void beginningScenario() {
         Game.printHeading("The Dungeon of Supreme Ancalagon");
         Game.anythingToContinue();
@@ -22,26 +24,28 @@ public class Scenarios {
         Game.clearConsole();
     }
 
+
+
+
     public static void floorSixteenIntro(Inventory inventory) {
         Game.printHeading("The hero-" + heroName + "\ntravels long distances, fights mountain ridge wolves. \nHe goes through many difficulties to find the stone.He was walking among the mountains.\nAnd he saw something. \nA door. Yeah yeah! it was a door. \nHe opened the door and his adventure began here. \nThis was the Ribbles place. It was a 16-floor dungeon that looked like hell. \nHe had no idea what was on the floors. \nHowever, all he felt was that the Liandum stone was here. It would start from the 16th floor and work its way up.");
         Game.anythingToContinue();
         Game.printHeading("Here is your inventory and your items, don't forget your inventory can carry items of a certain weight. ");
         inventory.displayInventory();
+        inventory.upgradeStats();
+        Game.printHeading("Here is your upgraded stats with items");
+        Game.selectedHero.displayInfo();
 
         Game.printHeading("There are 2 rooms on this floor. Which room would you like to open? 1 or 2 ? Choose carefully because you don't know what will come out of it. \n1. First Room \n2.Second Room");
-        int choice = scan.nextInt();
-        if (choice == 1) {
-            floorSixteenRoomOneIntro();
 
-        } else if(choice==2) {
-            floorSixteenRoomTwoIntro();
 
-        }
+
 
 
     }
 
     public static void floorSixteenRoomTwoIntro() {
+        Game.printHeading("Hero sees Red Spider. \n"+heroName+": Oh my god what a disgusting spider this is.");
     }
 
     public static void floorSixteenRoomOneIntro() {

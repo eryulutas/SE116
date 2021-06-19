@@ -5,13 +5,18 @@ public class Hero extends Character<Monster>{
 
     private int  armor;
     private String type;
+    Inventory inventory;
+    private int level; // UNUTMA
 
-    public int HitPoints=getAttackDamage()*getAttackSpeed();
 
-    public Hero(String name,int healthPoints,int maxHealthPoints,int attackDamage,int attackSpeed, int armor, String type) {
+
+
+    public Hero(String name,int healthPoints,int maxHealthPoints,int attackDamage,int attackSpeed, int armor, String type,int level,Inventory inventory) {
         super(Scenarios.heroName,healthPoints,maxHealthPoints,attackDamage,attackSpeed);
         this.armor=armor;
         this.type=type;
+        this.level=level;
+        this.inventory=inventory;
     }
 
 
@@ -19,10 +24,15 @@ public class Hero extends Character<Monster>{
 
         this.armor = 0;
         this.type = null;
+        this.level=0;
+        this.inventory=null;
     }
 
 
     public int attack(Monster monster) {
+        int attackDamage=getAttackDamage();
+        int attackSpeed=getAttackSpeed();
+        int HitPoints=attackDamage*attackSpeed;
         System.out.println("You attacked to monster!");
         int currentMonsterHealth=monster.getHealthPoints()-HitPoints;
 
@@ -34,6 +44,9 @@ public class Hero extends Character<Monster>{
             monster.setHealthPoints(currentMonsterHealth);
 
         }
+
+        monster.displayInfo();
+
         return currentMonsterHealth;
     }
 
@@ -94,12 +107,14 @@ public class Hero extends Character<Monster>{
         return type;
     }
 
-
-
-
-
-
+    public int getLevel() {
+        return level;
     }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+}
 
 
 

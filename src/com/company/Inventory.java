@@ -5,25 +5,30 @@ public class Inventory {
     private int inventoryCapacity;
     private Items attackItem;
     private Items boot;
-    private Items shield;
+    private Items armor;
     public Items item1,item2;
+    Hero hero;
 
 
 
 
-    public Inventory(int inventoryCapacity,Items attackItem,Items boot, Items shield){ // for tank
+    public Inventory(int inventoryCapacity,Items attackItem,Items boot, Items armor){ // for tank
+
+        //upgradeStats();
         this.inventoryCapacity=inventoryCapacity;
         this.attackItem=attackItem;
         this.boot=boot;
-        this.shield=shield;
+        this.armor=armor;
 
     }
+
+
 
     public Inventory(){
         this.inventoryCapacity=0;
         this.attackItem=null;
         this.boot=null;
-        this.shield= null;
+        this.armor= null;
     }
 
 
@@ -33,7 +38,7 @@ public class Inventory {
 
 
         if (item1.getMainType()=="attack item") {
-            int totalWeight=item1.getItemWeight()+boot.getItemWeight()+shield.getItemWeight();
+            int totalWeight=item1.getItemWeight()+boot.getItemWeight()+armor.getItemWeight();
             if(totalWeight<inventoryCapacity) {
 
                 setAttackItem(item1);
@@ -48,7 +53,7 @@ public class Inventory {
 
 
         else if(item1.getMainType()=="boot"){
-            int totalWeight=item1.getItemWeight()+attackItem.getItemWeight()+shield.getItemWeight();
+            int totalWeight=item1.getItemWeight()+attackItem.getItemWeight()+armor.getItemWeight();
 
             if(totalWeight<inventoryCapacity) {
 
@@ -64,7 +69,7 @@ public class Inventory {
 
 
 
-        else if (item1.getMainType()=="shield"){
+        else if (item1.getMainType()=="armor"){
 
             int totalWeight=item1.getItemWeight()+boot.getItemWeight()+attackItem.getItemWeight();
 
@@ -89,8 +94,19 @@ public class Inventory {
         System.out.println("----------------------------");
         boot.displayItemInfo();
         System.out.println("----------------------------");
-        shield.displayItemInfo();
+        armor.displayItemInfo();
         System.out.println("----------------------------");
+    }
+
+    public void upgradeStats() {
+        int totalAttackDamage=attackItem.getDamageUpgradeValue()+boot.getDamageUpgradeValue()+armor.getDamageUpgradeValue();
+        int totalAttackSpeed=attackItem.getSpeedUpgradeValue()+boot.getSpeedUpgradeValue()+armor.getSpeedUpgradeValue();
+        int totalArmor=attackItem.getArmorUpgradeValue()+boot.getSpeedUpgradeValue()+armor.getArmorUpgradeValue();
+
+        Game.selectedHero.setAttackDamage(totalAttackDamage+Game.selectedHero.getAttackDamage());
+        Game.selectedHero.setAttackSpeed(totalAttackSpeed+Game.selectedHero.getAttackSpeed());
+        Game.selectedHero.setArmor(totalArmor+Game.selectedHero.getArmor());
+
     }
 
 
@@ -121,10 +137,10 @@ public class Inventory {
     }
 
     public Items getShield() {
-        return shield;
+        return armor;
     }
 
     public void setShield(Items shield) {
-        this.shield = shield;
+        this.armor = shield;
     }
 }

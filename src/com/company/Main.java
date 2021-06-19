@@ -9,10 +9,10 @@ public class Main {
 
 
         Scanner scan = new Scanner(System.in);
-        //Hero types
-        Hero assassin = new Hero(Scenarios.heroName, 100, 100, 32, 2, 0, "Assassin");
-        Hero archer = new Hero(Scenarios.heroName, 100, 100, 30, 3, 0, "Archer");
-        Hero tank = new Hero(Scenarios.heroName, 100, 100, 35, 1, 5, "Tank");
+
+
+
+
 
         //Tank Items
         Items swordShield = new Items("Sword-Shield", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
@@ -32,15 +32,24 @@ public class Main {
         Items Crossbow = new Items("Cross Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
 
         //Armors
-        Items lightArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items heavyArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items helmet = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "boot", "sadasdasd");
+        Items lightArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items heavyArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items helmet = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "armor", "sadasdasd");
 
 
         //Common Items
         Items healthPot = new Items("Health Pot", 0, 0, 0, 25, 1, "Health", "asdsa");
+        // Inventory
+        Inventory tankInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
+        Inventory assassinInv = new Inventory(50, dagger, basicBoot,lightArmor);
+        Inventory archerInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
 
+
+        //Hero types
+        Hero assassin = new Hero(Scenarios.heroName, 100, 100, 32, 2, 0, "Assassin",1,assassinInv);
+        Hero archer = new Hero(Scenarios.heroName, 100, 100, 30, 3, 0, "Archer",1,archerInv);
+        Hero tank = new Hero(Scenarios.heroName, 100, 100, 35, 1, 5, "Tank",1,tankInv);
 
         // Monsters
         Monster monster16 = new Monster("Red Spider", 100, 100, 15, 1, "Poison Needle Attack");
@@ -61,13 +70,101 @@ public class Main {
         Monster monster1 = new Monster("Supreme Ancalagon", 100, 100, 10, 1, "Fire Attack,Fireball Attack,Fire Blast Attack");
 
 
-        Inventory tankInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
-        Inventory assassinInv = new Inventory(50, dagger, basicBoot,lightArmor);
-        Inventory archerInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
 
+
+
+        //Rooms  room8,room2 hikayeli odalar
+        Room room15=new Room(16,1,monster16);
+        Room room14_Assassin=new Room(16,2,monster15_Assassin);
+        Room room14_Archer=new Room(15,3,monster15_Archer);
+        Room room14_Tank=new Room(15,4,monster15_Tank);
+        Room room13=new Room(14,5,monster14);
+        Room room12=new Room(12,6,monster12);
+        Room room11=new Room(10,7,monster10);
+        Room room10=new Room(9,8,monster9_Room1);
+        Room room9=new Room(9,9,monster9_Room2);
+        Room room7=new Room(7,10,monster7);
+        Room room6=new Room(6,11,monster6);
+        Room room5=new Room(5,12,monster5);
+        Room room4=new Room(3,13,monster3_Room1);
+        Room room3=new Room(3,14,monster3_Room2_2,monster3Room2_1);
+        Room room1=new Room(1,15,monster1);
 
         Scenarios.beginningScenario();
         Hero selectedHero=Game.selectHero(assassin,tank,archer);
+        selectedHero.displayInfo();
+
+
+
+
+
+        Game.anythingToContinue();
+        Location currentLocation=new Location(1,selectedHero,selectedHero.getLevel());
+        currentLocation.displayLocCorridor(selectedHero);
+        Game.anythingToContinue();
+
+
+        Scenarios.floorSixteenIntro(selectedHero.inventory);
+        int roomChoice= Game.readInt("1. Room-1 \n2. Room-2",2);
+
+        if(roomChoice==1){
+            currentLocation.changeLocation(currentLocation,room15);
+            currentLocation.displayLoc(selectedHero);
+            Scenarios.floorSixteenRoomOneIntro();
+
+            String attackChoice= Game.readString("<ATTACK> -Attack To Monster: ",monster16,"<ROOM 2> -GO TO ROOM2");
+
+            if (attackChoice.matches("(.*)ATTACK(.*)")||attackChoice.matches("(.*)attack(.*)")) {
+                Game.battle(monster16);
+
+                //selectedHero.attack(monster16);
+                //Game.anythingToContinue();
+                //monster16.attack(selectedHero);
+
+            }
+            else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")){
+                if(selectedHero == assassin) {
+                    currentLocation.changeLocation(currentLocation,room14_Assassin);
+
+                }
+                else if(selectedHero==archer){
+                    currentLocation.changeLocation(currentLocation,room14_Archer);
+                }
+                else if(selectedHero==tank){
+                    currentLocation.changeLocation(currentLocation,room14_Tank);
+                }
+
+
+                currentLocation.displayLoc(selectedHero);
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       // Room room2=new Room(2);
+        //Room room1= new Room(1,monster16,);
+
+
+
+
+
+
+
+
+
 
 
        /* while (selectedHero.getHealthPoints() != 0) {
@@ -75,11 +172,12 @@ public class Main {
             Game.choices(); */
 
 
-            System.out.println("It is your basic bag and your items:");
-            tankInv.displayInventory();
 
 
-            System.out.println("here is a new sword:");
+
+
+
+           /* System.out.println("here is a new sword:");
             longSword.displayItemInfo();
             System.out.println("Will you change it?  \n1. Yes! \n2. No.");
             int choice = scan.nextInt();
@@ -101,13 +199,13 @@ public class Main {
         
         while(selectedHero.getHealthPoints()!=0){
             Game.actions();
-            Game.choices();
+            Game.choices(); */
 
 
         }
 
     }
-    }
+
 
 
 
