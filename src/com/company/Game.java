@@ -72,7 +72,8 @@ public class Game {
         }
     } */
 
-    public static void battle(Hero hero,Monster monster) {
+    public static void              battle(Hero hero,Monster monster) {
+        monster.displayInfo();
         hero.attack(monster);
         Game.anythingToContinue();
         monster.attack(hero);
@@ -85,7 +86,7 @@ public class Game {
                 hero.attack(monster);
                 Game.anythingToContinue();
                 monster.attack(hero);
-                if(monster.getHealthPoints()==0){
+                if(monster.getHealthPoints()<=0){
 
                     finishBattle=false;
                 }

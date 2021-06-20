@@ -28,6 +28,7 @@ public class Hero extends Character<Monster> {
 
     @Override
     public int attack(Monster monster) {
+        System.out.println("---------------You attacked to "+monster.getName()+"--------------------------");
 
         int attackDamage = getAttackDamage();
         int attackSpeed = getAttackSpeed();

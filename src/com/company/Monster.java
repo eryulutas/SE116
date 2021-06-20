@@ -29,7 +29,7 @@ public class Monster extends Character<Hero>{
 
     @Override
     public int attack(Hero hero){
-        System.out.println(getName()+": attacked you.");
+        System.out.println("-----------------"+getName()+" attacked you.---------------------");
         int currentHeroHealth;
         int reducedDamage;
         int attackDamage = getAttackDamage();

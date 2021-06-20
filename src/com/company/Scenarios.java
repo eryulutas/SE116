@@ -37,6 +37,7 @@ public class Scenarios {
         Game.anythingToContinue();
         Game.printHeading("Here is your upgraded stats with items");
         Game.selectedHero.displayInfo();
+        Game.anythingToContinue();
         Game.clearConsole();
         location.displayLocCorridor(Game.selectedHero);
 
@@ -62,8 +63,43 @@ public class Scenarios {
         Game.printHeading("Hero sees Red Spider. \n" + heroName + ": Oh my god what a disgusting spider this is.");
     }
 
-    public static void room2Scenario(){
+    public static void room2Scenario(Hero hero,Monster monster,Location location,Room room,Items item){//item will be helmet
+        location.changeLocation(location, room);
+        location.displayLoc(hero);
+        Scenarios.floorSixteenRoomTwoIntro();
+        int lisaChoice = Game.readInt("1- Untie the chains. \n2- Go up to second floor", 2);
+        if (lisaChoice == 1) {
+            System.out.println("Lisa gave you a helmet");
+            item.displayItemInfo();
+            int helmetChoice = Game.readInt(" \n1- Take it \n2- Leave it", 2);
+            if (helmetChoice == 1) {
+                hero.inventory.addAnItem(hero, item);
+                System.out.println("You added a helmet your inventory here your inventory.");
+                hero.inventory.displayInventory();
+                System.out.println("Lisa: Every good deed has a return.");
+                System.out.println("You: Oh my god Liza What did you do to me ");
+                monster.attack(hero);
+
+
+            }
+            else if (helmetChoice==2){
+                System.out.println("You did not take the helmet, who knows it may be a mistake :) ");
+                hero.inventory.displayInventory();
+                System.out.println("Go up to second floor");
+
+
+            }
+        }
+
+
+        else if (lisaChoice == 2) {
+            location.changeLocation(location, room);
+            location.displayLoc(hero);
+
+
+        }
+    }
 
     }
 
-}
+
