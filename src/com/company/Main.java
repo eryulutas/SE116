@@ -15,27 +15,27 @@ public class Main {
 
 
         //Tank Items
-        Items swordShield = new Items("Sword-Shield", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items shortSword = new Items("Short Sword", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items longSword = new Items("Long Sword", 15, 3, 2, 0, 5, "attack item", "dfhjdasj");
+        Items swordShield = new Items("Sword-Shield", 20, 1, 0, 0, 4, "attack item", "adsasdasd");
+        Items shortSword = new Items("Short Sword", 17, 1, 0, 0, 5, "attack item", "adsasdasd");
+        Items longSword = new Items("Long Sword", 25, 1, 0, 0, 7, "attack item", "dfhjdasj");
 
 
         // Assassin Items
-        Items dagger = new Items("Dagger", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items machetes = new Items("Machetes", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items throwingKnife = new Items("Throwing Knife", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items dagger = new Items("Dagger", 19, 2, 0, 0, 3, "attack item", "adsasdasd");
+        Items machetes = new Items("Machetes", 18, 2, 0, 0, 3, "attack item", "adsasdasd");
+        Items throwingKnife = new Items("Throwing Knife", 15, 2, 0, 0, 3, "attack item", "adsasdasd");
 
 
         //Archer Items
-        Items longRangeBow = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items shortRangeBow = new Items("Short Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items crossbow = new Items("Cross Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items longRangeBow = new Items("Long Range Bow", 17, 3, 0, 0, 7, "attack item", "adsasdasd");
+        Items shortRangeBow = new Items("Short Range Bow", 18, 2, 0, 0, 6, "attack item", "adsasdasd");
+        Items Crossbow = new Items("Cross Bow", 26, 1, 0, 0, 9, "attack item", "adsasdasd");
 
         //Armors
-        Items lightArmor = new Items("Light Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items heavyArmor = new Items("Heavy Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items heavyBoots = new Items("Heavy Boots", 7, 1, 3, 0, 4, "boot", "adsasdasd");
-        Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "boot", "sadasdasd");
+        Items lightArmor = new Items("Light Armor", 0, 2, 5, 0, 7, "armor", "adsasdasd");
+        Items heavyArmor = new Items("Heavy Armor", 0, 1, 7, 0, 11, "armor", "adsasdasd");
+        Items heavyBoots = new Items("Heavy Boots", 0, 1, 3, 0, 5, "armor", "adsasdasd");
+        Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "armor", "sadasdasd");
 
 
         //Common Items
@@ -44,9 +44,9 @@ public class Main {
         Items empty1=new Items("This slot is empty. You can add an item here",0,0,0,0,0,"empty","empty");
         Items empty2=new Items("This slot is empty. You can add an item here",0,0,0,0,0,"empty","empty");
         // Inventory
-        Inventory tankInv = new Inventory(50, shortSword, basicBoot,lightArmor,empty1,empty2);
+        Inventory tankInv = new Inventory(50, shortSword, basicBoot,heavyArmor,empty1,empty2);
         Inventory assassinInv = new Inventory(50, dagger, basicBoot,lightArmor,empty1,empty2);
-        Inventory archerInv = new Inventory(50, shortRangeBow, basicBoot,lightArmor,empty1,empty2);
+        Inventory archerInv = new Inventory(50, shortSword, basicBoot,heavyArmor,empty1,empty2);
 
 
         //Hero types
@@ -61,16 +61,14 @@ public class Main {
         Monster skeletonWarrior = new Monster("Skeleton Warrior", 150, 150, 45, 3, "Sword Strike Attack");
         Monster evilWizard = new Monster("Evil Wizard", 165, 165, 41, 1, "Magic Burst Attack");
 
-        Monster mysticMorgana_Assassin = new Monster("Mystic Morgana", 240, 240, 65, 2, "Chain Attack",machetes);
-        Monster mysticMorgana_Archer = new Monster("Mystic Morgana", 240, 240, 65, 2, "Chain Attack",longRangeBow);
-        Monster mysticMorgana_Tank = new Monster("Mystic Morgana", 240, 240, 65, 2, "Chain Attack",swordShield);
+        Monster mysticMorgana = new Monster("Mystic Morgana", 250, 250, 64, 2, "Chain Attack");
         Monster skeletonChampion = new Monster("Skeleton Champion", 249, 249, 68, 2, "Sword Strike Attack");
 
         Monster direWolf = new Monster("Dire Wolf", 309, 309, 100, 3, "Tooth Attack");
         Monster manyHeadedSibyrus = new Monster("Many-Headed Sibyrus", 300, 300, 95, 3, "Heads Attack");
 
         Monster scatha = new Monster("Scatha", 340, 340, 109, 4, "Orb Attack");
-        Monster scorpion= new Monster("Scorpion", 352, 352, 111, 3, "Thrust Attack",heavyBoots);
+        Monster scorpion= new Monster("Scorpion", 352, 352, 111, 3, "Thrust Attack");
 
 
         Monster keilan= new Monster("Keilan", 425, 425, 121, 11, "Thrust Attack");
@@ -79,19 +77,17 @@ public class Main {
 
 
         Monster littleOrc = new Monster("Little Orc", 525, 525, 151, 10, "Spike Attack");
-        Monster giantBulcan_Assassin = new Monster("Giant Bulcan", 529, 529, 161, 9, "Hit-Run Attack",throwingKnife);
-        Monster giantBulcan_Archer = new Monster("Giant Bulcan", 529, 529, 161, 9, "Hit-Run Attack",crossbow);
-        Monster giantBulcan_Tank = new Monster("Giant Bulcan", 529, 529, 161, 9, "Hit-Run Attack",longSword);
+        Monster giantBulcan = new Monster("Giant Bulcan", 529, 529, 161, 9, "Hit-Run Attack");
 
         Monster queenOfCrystals = new Monster("Queen Of Crystals", 610, 610, 175, 14, "Mass crystal attack");
         Monster rottenEye = new Monster("Rotten Eye", 621, 621, 10, 13, "Flying Eye Attack");
 
 
 
-        Monster balrog = new Monster("BALROG", 700, 700, 189, 15, "Fireball Attack",healthPot);
+        Monster balrog = new Monster("BALROG", 700, 700, 189, 15, "Fireball Attack");
 
         Monster spiritOfFire = new Monster("Spirit of Fire", 800, 800, 210, 15, "Basic Fire Attack");
-        Monster felankor = new Monster("Felankor", 800, 800, 257, 16, "Scorhing Heat Attack",heavyArmor);
+        Monster felankor = new Monster("Felankor", 800, 800, 257, 16, "Scorhing Heat Attack");
 
         Monster deruvish = new Monster("Deruvish", 840, 840, 217, 17, "Electric Attack");
         Monster apostle = new Monster("Apostle", 849, 849, 226, 9, "Lighting Orb Attack");
@@ -105,44 +101,39 @@ public class Main {
         //Rooms  room8,room2 hikayeli odalar
 
 
-        Room room1=new Room(1,24,supremeAncalagon);
+        Room room1=new Room(1,15,supremeAncalagon);
 
-        Room room2=new Room(2,23,room1);
-        Room room3=new Room(11,22,room2);
+        Room room2=new Room(2,14,room1);
+        Room room3=new Room(11,8,room2);
 
-        Room room4=new Room(2,21,apostle,room3);
-        Room room5=new Room(2,20,deruvish,room4);
+        Room room4=new Room(2,13,apostle,room3);
+        Room room5=new Room(2,13,deruvish,room4);
 
-        Room room6=new Room(3,19,felankor,room5);
-        Room room7=new Room(3,18,spiritOfFire,room6);
+        Room room6=new Room(3,13,felankor,room5);
+        Room room7=new Room(3,13,spiritOfFire,room6);
 
-        Room room8=new Room(5,17,balrog,room7);
+        Room room8=new Room(5,13,balrog,room7);
 
-        Room room9=new Room(6,16,rottenEye,room8);
-        Room room10=new Room(6,15,queenOfCrystals,room9);
+        Room room9=new Room(6,12,rottenEye,room8);
+        Room room10=new Room(6,11,queenOfCrystals,room9);
 
-        Room room11=new Room(7,14,littleOrc);
-        Room room12_Assassin=new Room(7,13,giantBulcan_Assassin,room11);
-        Room room12_Archer=new Room(7,13,giantBulcan_Archer,room11);
-        Room room12_Tank=new Room(7,13,giantBulcan_Tank,room11);
+        Room room11=new Room(7,10,littleOrc,room10);
+        Room room12=new Room(7,9,giantBulcan,room11);
 
-        Room room13=new Room(9,12,troll);
-        Room room14=new Room(9,11,keilan,room13);
+        Room room13=new Room(9,8,troll,room12);
+        Room room14=new Room(9,8,keilan,room13);
 
-        Room room15=new Room(10,10,scorpion,room14);
-        Room room16=new Room(10,9,scatha,room15);
-             //KAt 11 bilmece
-        Room room17=new Room(12,8,direWolf,room16);
-        Room room18=new Room(12,7,manyHeadedSibyrus,room17);
-        //Kat 13 bilmece
-        Room room19=new Room(14,6,skeletonChampion);
-        Room room20_Assassin=new Room(14,5,mysticMorgana_Assassin,room18);
-        Room room20_Archer=new Room(14,5,mysticMorgana_Archer,room18);
-        Room room20_Tank=new Room(14,5,mysticMorgana_Tank,room18);
+        Room room15=new Room(10,7,scorpion,room14);
+        Room room16=new Room(10,7,scatha,room15);
+
+        Room room17=new Room(12,6,direWolf,room16);
+        Room room18=new Room(12,5,manyHeadedSibyrus,room17);
+
+        Room room19=new Room(14,5,skeletonChampion,room18);
+        Room room20=new Room(14,4,mysticMorgana,room19);
 
 
-
-        Room room21=new Room(15,4,evilWizard);
+        Room room21=new Room(15,3,evilWizard,room20);
         Room room22=new Room(15,3,skeletonWarrior,room21);
 
         Room room23=new Room(16,2,lisa,room22);
@@ -162,79 +153,32 @@ public class Main {
 
 
 
-             int roomChoice = Game.readInt("1. Room-1 \n2. Room-2", 2);
+        int roomChoice= Game.readInt("1. Room-1 \n2. Room-2",2);
 
-             if (roomChoice == 1) {                                              // FIRST ROOM
-                 currentLocation.changeLocation(selectedHero, currentLocation, room24);
-                 currentLocation.displayLoc(selectedHero);
-                 Scenarios.floorSixteenRoomOneIntro();
+        if(roomChoice==1){                                              // FIRST ROOM
+            currentLocation.changeLocation(selectedHero,currentLocation,room24);
+            currentLocation.displayLoc(selectedHero);
+            Scenarios.floorSixteenRoomOneIntro();
 
-                 String attackChoice = Game.readString("<ATTACK> -Attack To Monster: ", redSpider, "<ROOM 2> -GO TO ROOM2");
+            String attackChoice= Game.readString("<ATTACK> -Attack To Monster: ",redSpider,"<ROOM 2> -GO TO ROOM2");
 
-                 if (attackChoice.matches("(.*)ATTACK(.*)") || attackChoice.matches("(.*)attack(.*)")) {
-                     Game.battle(selectedHero, redSpider);
-                     Game.clearConsole();
-                     System.out.println("You: That was easy, now we will see what is behind room 2");
-                     Game.anythingToContinue();
-                     Scenarios.room23Scenario(selectedHero, lisa, currentLocation, room23, helmet);
+            if (attackChoice.matches("(.*)ATTACK(.*)")||attackChoice.matches("(.*)attack(.*)")) {
+                Game.battle(selectedHero,redSpider);
+                Game.clearConsole();
+                System.out.println("You: That was easy, now we will see what is behind room 2");
+                Game.anythingToContinue();
+                Scenarios.room2Scenario(selectedHero,lisa,currentLocation,room23,helmet);
 
 
-                 } else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")) {
+                //selectedHero.attack(monster16);
+                //Game.anythingToContinue();
+                //monster16.attack(selectedHero);
 
-                     Scenarios.room23Scenario(selectedHero, lisa, currentLocation, room23, helmet);
-                 } else if (roomChoice == 2) {
+            }
+            else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")) {
 
-                     Scenarios.room23Scenario(selectedHero, lisa, currentLocation, room23, helmet);
-
-                 }
-
-             }
-             currentLocation.changeLocation(selectedHero, currentLocation, room22);
-             selectedHero.upgradeLevel();
-             Game.attackOrChangeRoom(selectedHero, skeletonWarrior, currentLocation, room21);
-             currentLocation.displayLoc(selectedHero);
-             Game.attackOrChangeRoom(selectedHero, evilWizard, currentLocation, room19);
-
-             if (selectedHero == assassin) {
-                 Game.attackOrChangeRoom(selectedHero, skeletonChampion, currentLocation, room20_Assassin);
-                 Game.attackOrChangeRoom(selectedHero, mysticMorgana_Assassin, currentLocation, room18);
-
-             } else if (selectedHero == archer) {
-                 Game.attackOrChangeRoom(selectedHero, skeletonChampion, currentLocation, room20_Archer);
-                 Game.attackOrChangeRoom(selectedHero, mysticMorgana_Archer, currentLocation, room18);
-
-             } else if (selectedHero == tank) {
-                 Game.attackOrChangeRoom(selectedHero, skeletonChampion, currentLocation, room20_Tank);
-                 Game.attackOrChangeRoom(selectedHero, mysticMorgana_Tank, currentLocation, room18);
-
-             }
-
-             Game.attackOrChangeRoom(selectedHero, manyHeadedSibyrus, currentLocation, room17);
-             Game.attackOrChangeRoom(selectedHero, direWolf, currentLocation, room16);
-             Game.attackOrChangeRoom(selectedHero, scatha, currentLocation, room15);
-
-             if (selectedHero == assassin) {
-                 Game.attackOrChangeRoom(selectedHero, littleOrc, currentLocation, room12_Assassin);
-                 Game.attackOrChangeRoom(selectedHero, giantBulcan_Assassin, currentLocation, room10);
-
-             } else if (selectedHero == archer) {
-                 Game.attackOrChangeRoom(selectedHero, littleOrc, currentLocation, room12_Archer);
-                 Game.attackOrChangeRoom(selectedHero, giantBulcan_Archer, currentLocation, room10);
-
-             } else if (selectedHero == tank) {
-                 Game.attackOrChangeRoom(selectedHero, littleOrc, currentLocation, room12_Tank);
-                 Game.attackOrChangeRoom(selectedHero, giantBulcan_Tank, currentLocation, room10);
-
-             }
-             Game.attackOrChangeRoom(selectedHero, queenOfCrystals, currentLocation, room9);
-             Game.attackOrChangeRoom(selectedHero, rottenEye, currentLocation, room8);
-             Game.attackOrChangeRoom(selectedHero, balrog, currentLocation, room7);
-             Game.attackOrChangeRoom(selectedHero, spiritOfFire, currentLocation, room6);
-             Game.attackOrChangeRoom(selectedHero, felankor, currentLocation, room5);
-             Game.attackOrChangeRoom(selectedHero, deruvish, currentLocation, room4);
-             Game.attackOrChangeRoom(selectedHero, apostle, currentLocation, room1);
-
-             Game.attackOrChangeRoom(selectedHero, supremeAncalagon, currentLocation, room1);
+                Scenarios.room2Scenario(selectedHero,lisa,currentLocation,room14,helmet);
+                }
 
 
 
@@ -243,15 +187,7 @@ public class Main {
 
 
 
-
-
-
-
-
-
-
-
-
+            }
 
 
 
