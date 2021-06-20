@@ -22,13 +22,17 @@ public class Location {
     }
 
 
-    public void changeLocation(Location oldLocation,Room newRoom){
+    public void changeLocation(Hero hero,Location oldLocation,Room newRoom){
 
         if(newRoom.getFloor()<oldLocation.getFloor()) { //upstairs
 
             oldLocation.setRoom(newRoom);
             oldLocation.setFloor(newRoom.getFloor());
             oldLocation.setHeroLevel(Game.selectedHero.getLevel() + 1);
+            hero.upgradeLevel(hero);
+            System.out.println("-------YOUR LEVEL UPGRADED.-----------"+"\nYour current stats\n");
+            hero.displayInfo();
+
         }
 
         else{

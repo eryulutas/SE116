@@ -156,7 +156,7 @@ public class Main {
         int roomChoice= Game.readInt("1. Room-1 \n2. Room-2",2);
 
         if(roomChoice==1){                                              // FIRST ROOM
-            currentLocation.changeLocation(currentLocation,room24);
+            currentLocation.changeLocation(selectedHero,currentLocation,room24);
             currentLocation.displayLoc(selectedHero);
             Scenarios.floorSixteenRoomOneIntro();
 

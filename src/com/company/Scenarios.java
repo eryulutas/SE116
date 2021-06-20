@@ -64,7 +64,7 @@ public class Scenarios {
     }
 
     public static void room2Scenario(Hero hero,Monster monster,Location location,Room room,Items item){//item will be helmet
-        location.changeLocation(location, room);
+        location.changeLocation(hero,location, room);
         location.displayLoc(hero);
         Scenarios.floorSixteenRoomTwoIntro();
         int lisaChoice = Game.readInt("1- Untie the chains. \n2- Go up to second floor", 2);
@@ -93,7 +93,7 @@ public class Scenarios {
 
 
         else if (lisaChoice == 2) {
-            location.changeLocation(location, room);
+            location.changeLocation(hero,location,room);
             location.displayLoc(hero);
 
 
