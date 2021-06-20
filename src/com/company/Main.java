@@ -32,113 +32,156 @@ public class Main {
         Items Crossbow = new Items("Cross Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
 
         //Armors
-        Items lightArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items heavyArmor = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items helmet = new Items("Long Range Bow", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items lightArmor = new Items("Light Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items heavyArmor = new Items("Heavy Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items heavyBoots = new Items("Heavy Boots", 7, 1, 3, 0, 4, "armor", "adsasdasd");
         Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "armor", "sadasdasd");
 
 
         //Common Items
         Items healthPot = new Items("Health Pot", 0, 0, 0, 25, 1, "Health", "asdsa");
+        Items helmet = new Items("Helmet", 0, 1, 3, 0, 5, "Health", "asdsa");
+        Items empty1=new Items("This slot is empty. You can add an item here",0,0,0,0,0,"empty","empty");
+        Items empty2=new Items("This slot is empty. You can add an item here",0,0,0,0,0,"empty","empty");
         // Inventory
-        Inventory tankInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
-        Inventory assassinInv = new Inventory(50, dagger, basicBoot,lightArmor);
-        Inventory archerInv = new Inventory(50, shortSword, basicBoot,heavyArmor);
+        Inventory tankInv = new Inventory(50, shortSword, basicBoot,heavyArmor,empty1,empty2);
+        Inventory assassinInv = new Inventory(50, dagger, basicBoot,lightArmor,empty1,empty2);
+        Inventory archerInv = new Inventory(50, shortSword, basicBoot,heavyArmor,empty1,empty2);
 
 
         //Hero types
-        Hero assassin = new Hero(Scenarios.heroName, 100, 100, 32, 2, 0, "Assassin",1,assassinInv);
-        Hero archer = new Hero(Scenarios.heroName, 100, 100, 30, 3, 0, "Archer",1,archerInv);
-        Hero tank = new Hero(Scenarios.heroName, 100, 100, 35, 1, 5, "Tank",1,tankInv);
+        Hero assassin = new Hero(Scenarios.heroName, 100, 100, 0, 1, 5, "Assassin",1,assassinInv);
+        Hero archer = new Hero(Scenarios.heroName, 100, 100, 29, 1, 5, "Archer",1,archerInv);
+        Hero tank = new Hero(Scenarios.heroName, 100, 100, 35, 1, 7, "Tank",1,tankInv);
 
         // Monsters
-        Monster monster16 = new Monster("Red Spider", 100, 100, 15, 1, "Poison Needle Attack");
-        Monster monster15_Assassin = new Monster("Skeleton Warrior", 100, 100, 10, 1, "Sword Strike Attack", machetes);//for assassin
-        Monster monster15_Tank = new Monster("Skeleton Warrior", 100, 100, 10, 1, "Sword Strike Attack", longSword);//for tank
-        Monster monster15_Archer = new Monster("Skeleton Warrior", 100, 100, 10, 1, "Sword Strike Attack", longRangeBow);//for archer
-        Monster monster14 = new Monster("Mystic Morgana", 100, 100, 10, 1, "Chain Attack");
-        Monster monster12 = new Monster("Many-Headed Sibyrus", 100, 100, 10, 1, "Heads Attack");
-        Monster monster10 = new Monster("Scatha", 100, 100, 10, 1, "Orb Attack");
-        Monster monster9_Room1 = new Monster("Keilan", 100, 100, 10, 1, "Thrust Attack");
-        Monster monster9_Room2 = new Monster("Troll", 100, 100, 10, 1, "Slight Attack");
-        Monster monster7 = new Monster("Little Orc", 100, 100, 10, 1, "Spike Attack");
-        Monster monster6 = new Monster("Queen Of Crystals", 100, 100, 10, 1, "Mass crystal attack");
-        Monster monster5 = new Monster("BALROG", 100, 100, 10, 1, "Fireball Attack");
-        Monster monster3_Room1 = new Monster("Spirit of Fire", 100, 100, 10, 1, "Basic Fire Attack");
-        Monster monster3Room2_1 = new Monster("Deruvish", 100, 100, 10, 1, "Electric Attack");
-        Monster monster3_Room2_2 = new Monster("Apostle", 100, 100, 10, 1, "Lighting Orb Attack");
-        Monster monster1 = new Monster("Supreme Ancalagon", 100, 100, 10, 1, "Fire Attack,Fireball Attack,Fire Blast Attack");
+        Monster redSpider = new Monster("Red Spider", 90, 90, 18, 1, "Poison Needle Attack");
+        Monster lisa=new Monster("Lisa",0,0,10,1,"sddas",helmet);
+        Monster skeletonWarrior = new Monster("Skeleton Warrior", 150, 150, 45, 3, "Sword Strike Attack");
+
+        Monster mysticMorgana = new Monster("Mystic Morgana", 250, 250, 64, 2, "Chain Attack");
+        Monster manyHeadedSibyrus = new Monster("Many-Headed Sibyrus", 300, 300, 95, 6, "Heads Attack");
+        Monster scatha = new Monster("Scatha", 340, 340, 109, 8, "Orb Attack");
+        Monster keilan= new Monster("Keilan", 425, 425, 121, 11, "Thrust Attack");
+        Monster troll = new Monster("Troll", 470, 470, 145, 8, "Slight Attack");
+        Monster littleOrc = new Monster("Little Orc", 525, 525, 151, 10, "Spike Attack");
+        Monster queenOfCrystals = new Monster("Queen Of Crystals", 100, 100, 10, 1, "Mass crystal attack");
+        Monster balrog = new Monster("BALROG", 700, 700, 189, 15, "Fireball Attack");
+        Monster spiritOfFire = new Monster("Spirit of Fire", 800, 800, 210, 15, "Basic Fire Attack");
+        Monster deruvish = new Monster("Deruvish", 840, 840, 217, 17, "Electric Attack");
+        Monster apostle = new Monster("Apostle", 849, 849, 226, 9, "Lighting Orb Attack");
+        Monster supremeAncalagon = new Monster("Supreme Ancalagon", 1000, 1000, 300, 25, "Fire Attack,Fireball Attack,Fire Blast Attack");
 
 
 
 
 
         //Rooms  room8,room2 hikayeli odalar
-        Room room15=new Room(16,1,monster16);
-        Room room14_Assassin=new Room(16,2,monster15_Assassin);
-        Room room14_Archer=new Room(15,3,monster15_Archer);
-        Room room14_Tank=new Room(15,4,monster15_Tank);
-        Room room13=new Room(14,5,monster14);
-        Room room12=new Room(12,6,monster12);
-        Room room11=new Room(10,7,monster10);
-        Room room10=new Room(9,8,monster9_Room1);
-        Room room9=new Room(9,9,monster9_Room2);
-        Room room7=new Room(7,10,monster7);
-        Room room6=new Room(6,11,monster6);
-        Room room5=new Room(5,12,monster5);
-        Room room4=new Room(3,13,monster3_Room1);
-        Room room3=new Room(3,14,monster3_Room2_2,monster3Room2_1);
-        Room room1=new Room(1,15,monster1);
+
+
+        Room room1=new Room(1,15,supremeAncalagon);
+
+        Room room2=new Room(6,14,room1);
+
+        Room room3=new Room(6,13,deruvish,apostle,room2);
+        Room room4=new Room(7,12,spiritOfFire,room3);
+        Room room5=new Room(8,11,balrog,room4);
+        Room room6=new Room(9,10,queenOfCrystals,room5);
+        Room room7=new Room(10,9,littleOrc,room6);
+
+        Room room8=new Room(11,8,room7);
+
+        Room room9=new Room(12,7,troll,room8);
+        Room room10=new Room(13,6,keilan,room9);
+        Room room11=new Room(13,5,scatha,room10);
+        Room room12=new Room(14,4,manyHeadedSibyrus,room11);
+        Room room13=new Room(15,3,mysticMorgana,room12);
+        Room room14=new Room(16,2,lisa,room13);
+        Room room15=new Room(16,1,redSpider,room14);
+
+
+
 
         Scenarios.beginningScenario();
         Hero selectedHero=Game.selectHero(assassin,tank,archer);
         selectedHero.displayInfo();
-
-
-
-
-
         Game.anythingToContinue();
+        Game.clearConsole();
         Location currentLocation=new Location(1,selectedHero,selectedHero.getLevel());
-        currentLocation.displayLocCorridor(selectedHero);
-        Game.anythingToContinue();
+
+        Scenarios.floorSixteenIntro(selectedHero.inventory,currentLocation);
 
 
-        Scenarios.floorSixteenIntro(selectedHero.inventory);
+
         int roomChoice= Game.readInt("1. Room-1 \n2. Room-2",2);
 
-        if(roomChoice==1){
+        if(roomChoice==1){ // FIRST ROOM
             currentLocation.changeLocation(currentLocation,room15);
             currentLocation.displayLoc(selectedHero);
             Scenarios.floorSixteenRoomOneIntro();
 
-            String attackChoice= Game.readString("<ATTACK> -Attack To Monster: ",monster16,"<ROOM 2> -GO TO ROOM2");
+            String attackChoice= Game.readString("<ATTACK> -Attack To Monster: ",redSpider,"<ROOM 2> -GO TO ROOM2");
 
             if (attackChoice.matches("(.*)ATTACK(.*)")||attackChoice.matches("(.*)attack(.*)")) {
-                Game.battle(monster16);
+                Game.battle(selectedHero,redSpider);
 
                 //selectedHero.attack(monster16);
                 //Game.anythingToContinue();
                 //monster16.attack(selectedHero);
 
             }
-            else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")){
-                if(selectedHero == assassin) {
-                    currentLocation.changeLocation(currentLocation,room14_Assassin);
+            else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")) {
 
-                }
-                else if(selectedHero==archer){
-                    currentLocation.changeLocation(currentLocation,room14_Archer);
-                }
-                else if(selectedHero==tank){
-                    currentLocation.changeLocation(currentLocation,room14_Tank);
-                }
-
-
+                currentLocation.changeLocation(currentLocation, room14);
                 currentLocation.displayLoc(selectedHero);
+                Scenarios.floorSixteenRoomTwoIntro();
+                int lisaChoice = Game.readInt("1- Untie the chains. \n2- Go up to second floor", 2);
+                if (lisaChoice == 1) {
+                    System.out.println("Lisa gave you a helmet");
+                    helmet.displayItemInfo();
+                    int helmetChoice = Game.readInt(" \n1- Take it \n2- Leave it", 2);
+                    if (helmetChoice == 1) {
+                        selectedHero.inventory.addAnItem(selectedHero, helmet);
+                        System.out.println("You added a helmet your inventory here your inventory.");
+                        selectedHero.inventory.displayInventory();
+                        System.out.println("Lisa: Every good deed has a return.");
+                        System.out.println("You: Oh my god Liza What did you do to me ");
+                        lisa.attack(selectedHero);
+
+
+                    }
+                    else if (helmetChoice==2){
+                        System.out.println("You did not take the helmet, who knows it may be a mistake :) ");
+                        selectedHero.inventory.displayInventory();
+                        System.out.println("Go up to second floor");
+
+
+                    }
+                }
+
+
+
+
+
+
+
+              else if (lisaChoice == 2) {
+                    currentLocation.changeLocation(currentLocation, room13);
+                    currentLocation.displayLoc(selectedHero);
+
+
+                }
+            }
+
+
+
+
+
+
             }
 
         }
+
 
 
 
@@ -204,7 +247,7 @@ public class Main {
 
         }
 
-    }
+
 
 
 

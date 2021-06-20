@@ -2,6 +2,8 @@ package com.company;
 
 public class Room {
 
+    Room connectedRoom1;
+    Room connectedRoom2;
     Monster monster;
     Monster monster1;
     private int roomNumber;
@@ -24,6 +26,15 @@ public class Room {
         this.roomNumber=roomNumber;
         this.monster=monster;
         this.room=room;
+
+    }
+    public Room(int floor,int roomNumber,Monster monster,Room connectedRoom1,Room connectedRoom2){
+        this.floor=floor;
+        this.roomNumber=roomNumber;
+        this.monster=monster;
+        this.connectedRoom1=connectedRoom1;
+        this.connectedRoom2=connectedRoom2;
+
 
     }
     public Room(int floor,int roomNumber,Monster monster,Monster monster1){

@@ -6,19 +6,22 @@ public class Inventory {
     private Items attackItem;
     private Items boot;
     private Items armor;
-    public Items item1,item2;
+    private Items empty1;
+    private Items empty2;
     Hero hero;
 
 
 
 
-    public Inventory(int inventoryCapacity,Items attackItem,Items boot, Items armor){ // for tank
+    public Inventory(int inventoryCapacity,Items attackItem,Items boot, Items armor,Items empty1,Items empty2){
 
         //upgradeStats();
         this.inventoryCapacity=inventoryCapacity;
         this.attackItem=attackItem;
         this.boot=boot;
         this.armor=armor;
+        this.empty1=empty1;
+        this.empty2=empty2;
 
     }
 
@@ -29,6 +32,16 @@ public class Inventory {
         this.attackItem=null;
         this.boot=null;
         this.armor= null;
+        this.empty1=null;
+        this.empty2=null;
+    }
+    public void addAnItem(Hero hero,Items newItem){
+        hero.inventory.setEmpty1(newItem);
+    }
+    public void addTwoItem(Hero hero,Items newItem,Items newItem2){
+        hero.inventory.setEmpty1(newItem);
+        hero.inventory.setEmpty1(newItem2);
+
     }
 
 
@@ -75,7 +88,7 @@ public class Inventory {
 
             if(totalWeight<inventoryCapacity) {
 
-                setShield(item1);
+                setArmor(item1);
                 System.out.println("Your items changed.");
                 Game.selectedHero.upgrade(Game.selectedHero,item1);
             }
@@ -96,12 +109,16 @@ public class Inventory {
         System.out.println("----------------------------");
         armor.displayItemInfo();
         System.out.println("----------------------------");
+        empty1.displayItemInfo();
+        System.out.println("----------------------------");
+        empty2.displayItemInfo();
+        System.out.println("----------------------------");
     }
 
     public void upgradeStats() {
         int totalAttackDamage=attackItem.getDamageUpgradeValue()+boot.getDamageUpgradeValue()+armor.getDamageUpgradeValue();
         int totalAttackSpeed=attackItem.getSpeedUpgradeValue()+boot.getSpeedUpgradeValue()+armor.getSpeedUpgradeValue();
-        int totalArmor=attackItem.getArmorUpgradeValue()+boot.getSpeedUpgradeValue()+armor.getArmorUpgradeValue();
+        int totalArmor=attackItem.getArmorUpgradeValue()+boot.getArmorUpgradeValue()+armor.getArmorUpgradeValue();
 
         Game.selectedHero.setAttackDamage(totalAttackDamage+Game.selectedHero.getAttackDamage());
         Game.selectedHero.setAttackSpeed(totalAttackSpeed+Game.selectedHero.getAttackSpeed());
@@ -110,7 +127,21 @@ public class Inventory {
     }
 
 
+    public Items getEmpty1() {
+        return empty1;
+    }
 
+    public void setEmpty1(Items empty1) {
+        this.empty1 = empty1;
+    }
+
+    public Items getEmpty2() {
+        return empty2;
+    }
+
+    public void setEmpty2(Items empty2) {
+        this.empty2 = empty2;
+    }
 
     public int getInventoryCapacity() {
         return inventoryCapacity;
@@ -136,11 +167,11 @@ public class Inventory {
         this.boot = boot;
     }
 
-    public Items getShield() {
+    public Items getArmor() {
         return armor;
     }
 
-    public void setShield(Items shield) {
-        this.armor = shield;
+    public void setArmor(Items armor) {
+        this.armor = armor;
     }
 }

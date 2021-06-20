@@ -72,18 +72,19 @@ public class Game {
         }
     } */
 
-    public static void battle(Monster monster) {
-        selectedHero.attack(monster);
+    public static void battle(Hero hero,Monster monster) {
+        hero.attack(monster);
         Game.anythingToContinue();
-        monster.attack(selectedHero);
+        monster.attack(hero);
+
 
         boolean finishBattle=true;
         while (finishBattle) {
             int input = readInt("1. Continue to Attack \n2. Finish Battle", 2);
             if (input == 1) {
-                selectedHero.attack(monster);
+                hero.attack(monster);
                 Game.anythingToContinue();
-                monster.attack(selectedHero);
+                monster.attack(hero);
                 if(monster.getHealthPoints()==0){
 
                     finishBattle=false;

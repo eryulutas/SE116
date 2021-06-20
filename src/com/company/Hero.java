@@ -1,22 +1,20 @@
 package com.company;
 
-public class Hero extends Character<Monster>{
-     public Monster monster;
+public class Hero extends Character<Monster> {
 
-    private int  armor;
+
+    private int armor;
     private String type;
     Inventory inventory;
     private int level; // UNUTMA
 
 
-
-
-    public Hero(String name,int healthPoints,int maxHealthPoints,int attackDamage,int attackSpeed, int armor, String type,int level,Inventory inventory) {
-        super(Scenarios.heroName,healthPoints,maxHealthPoints,attackDamage,attackSpeed);
-        this.armor=armor;
-        this.type=type;
-        this.level=level;
-        this.inventory=inventory;
+    public Hero(String name, int healthPoints, int maxHealthPoints, int attackDamage, int attackSpeed, int armor, String type, int level, Inventory inventory) {
+        super(Scenarios.heroName, healthPoints, maxHealthPoints, attackDamage, attackSpeed);
+        this.armor = armor;
+        this.type = type;
+        this.level = level;
+        this.inventory = inventory;
     }
 
 
@@ -24,32 +22,34 @@ public class Hero extends Character<Monster>{
 
         this.armor = 0;
         this.type = null;
-        this.level=0;
-        this.inventory=null;
+        this.level = 0;
+        this.inventory = null;
     }
 
-
+    @Override
     public int attack(Monster monster) {
-        int attackDamage=getAttackDamage();
-        int attackSpeed=getAttackSpeed();
-        int HitPoints=attackDamage*attackSpeed;
-        System.out.println("You attacked to monster!");
-        int currentMonsterHealth=monster.getHealthPoints()-HitPoints;
 
-        if(currentMonsterHealth==0){
-            System.out.println("You defeated the monster"+monster.getName());
-            monster.setHealthPoints(0);
-        }
-        else {
+        int attackDamage = getAttackDamage();
+        int attackSpeed = getAttackSpeed();
+        int attack = attackDamage * attackSpeed;
+        int currentMonsterHealth = monster.getHealthPoints() - attack;
+
+        if (currentMonsterHealth > 0) {
             monster.setHealthPoints(currentMonsterHealth);
+            monster.displayInfo();
+
+
+
+        } else if (currentMonsterHealth <= 0) {
+            monster.setHealthPoints(0);
+            System.out.println("You defeated the monster!");
+
 
         }
 
-        monster.displayInfo();
 
         return currentMonsterHealth;
     }
-
     @Override
     public void displayInfo() {
         Game.printHeading("Your champ details:");

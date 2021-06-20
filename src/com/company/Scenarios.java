@@ -27,16 +27,20 @@ public class Scenarios {
 
 
 
-    public static void floorSixteenIntro(Inventory inventory) {
+    public static void floorSixteenIntro(Inventory inventory,Location location) {
         Game.printHeading("The hero-" + heroName + "\ntravels long distances, fights mountain ridge wolves. \nHe goes through many difficulties to find the stone.He was walking among the mountains.\nAnd he saw something. \nA door. Yeah yeah! it was a door. \nHe opened the door and his adventure began here. \nThis was the Ribbles place. It was a 16-floor dungeon that looked like hell. \nHe had no idea what was on the floors. \nHowever, all he felt was that the Liandum stone was here. It would start from the 16th floor and work its way up.");
         Game.anythingToContinue();
-        Game.printHeading("Here is your inventory and your items, don't forget your inventory can carry items of a certain weight. ");
+        Game.clearConsole();
+        Game.printHeading("Here is your inventory and your basic items, don't forget your inventory can carry items of a certain weight. ");
         inventory.displayInventory();
         inventory.upgradeStats();
+        Game.anythingToContinue();
         Game.printHeading("Here is your upgraded stats with items");
         Game.selectedHero.displayInfo();
+        Game.clearConsole();
+        location.displayLocCorridor(Game.selectedHero);
 
-        Game.printHeading("There are 2 rooms on this floor. Which room would you like to open? 1 or 2 ? Choose carefully because you don't know what will come out of it. \n1. First Room \n2.Second Room");
+        Game.printHeading("There are 2 rooms on this floor. Which room would you like to open? 1 or 2 ? Choose carefully because you don't know what will come out of it. ");
 
 
 
@@ -45,11 +49,21 @@ public class Scenarios {
     }
 
     public static void floorSixteenRoomTwoIntro() {
-        Game.printHeading("Hero sees Red Spider. \n"+heroName+": Oh my god what a disgusting spider this is.");
+
+        Game.printHeading("You: Wow Who are you ?\nI have never seen such a beautiful woman before. I can’t believe.");
+        Game.printHeading("Lisa: My my my my my my name is Liza.\n" +
+                "-If you free me from my chains, I will give you 10 gold and 10 attack power sword, bow or\n" +
+                "knife.");
+
     }
 
     public static void floorSixteenRoomOneIntro() {
+
+        Game.printHeading("Hero sees Red Spider. \n" + heroName + ": Oh my god what a disgusting spider this is.");
     }
 
+    public static void room2Scenario(){
+
+    }
 
 }
