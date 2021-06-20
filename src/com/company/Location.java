@@ -28,10 +28,10 @@ public class Location {
 
             oldLocation.setRoom(newRoom);
             oldLocation.setFloor(newRoom.getFloor());
-            oldLocation.setHeroLevel(Game.selectedHero.getLevel() + 1);
-            hero.upgradeLevel(hero);
-            System.out.println("-------YOUR LEVEL UPGRADED.-----------"+"\nYour current stats\n");
-            hero.displayInfo();
+            oldLocation.setHeroLevel(hero.getLevel() + 1);
+
+
+
 
         }
 

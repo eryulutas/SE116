@@ -37,7 +37,7 @@ public class Hero extends Character<Monster> {
 
         if (currentMonsterHealth > 0) {
             monster.setHealthPoints(currentMonsterHealth);
-            monster.displayInfo();
+
 
 
 
@@ -71,15 +71,17 @@ public class Hero extends Character<Monster> {
 
 
 
-    public void upgradeLevel(Hero hero) {
-        int currentAttackDamage = hero.getAttackDamage() + hero.getAttackDamage()/10;
-        int currentAttackSpeed = hero.getAttackSpeed() + hero.getAttackSpeed()/10;
-        int currentArmor = hero.getAttackSpeed() + hero.getArmor()/10;
-        int currentHealthPoint = hero.getAttackSpeed() + hero.getAttackSpeed()/10;
-        hero.setAttackDamage(currentAttackDamage);
-        hero.setAttackDamage(currentAttackSpeed);
-        hero.setArmor(currentArmor);
-        hero.setHealthPoints(currentHealthPoint);
+    public void upgradeLevel() {
+        System.out.println("-------YOUR LEVEL UPGRADED.-----------"+"\n---------Your current stats---------\n");
+        int currentAttackDamage = getAttackDamage() + getAttackDamage()/10;
+        int currentAttackSpeed = getAttackSpeed() + getAttackSpeed()/10;
+        int currentArmor = getArmor() + getArmor()/10;
+        int currentHealthPoint = getHealthPoints() + getHealthPoints()/10;
+        setAttackDamage(currentAttackDamage);
+        setAttackSpeed(currentAttackSpeed);
+        setArmor(currentArmor);
+        setHealthPoints(currentHealthPoint);
+        displayInfo();
 
     }
 

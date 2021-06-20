@@ -47,7 +47,7 @@ public class Monster extends Character<Hero>{
         currentHeroHealth=hero.getHealthPoints()-reducedDamage;
         hero.setHealthPoints(currentHeroHealth);
 
-        hero.displayInfo();
+
 
         return currentHeroHealth;
 

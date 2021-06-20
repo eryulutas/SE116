@@ -48,25 +48,25 @@ public class Scenarios {
 
 
     }
-
-    public static void floorSixteenRoomTwoIntro() {
-
-        Game.printHeading("You: Wow Who are you ?\nI have never seen such a beautiful woman before. I can’t believe.");
-        Game.printHeading("Lisa: My my my my my my name is Liza.\n" +
-                "-If you free me from my chains, I will give you 10 gold and 10 attack power sword, bow or\n" +
-                "knife.");
-
-    }
-
     public static void floorSixteenRoomOneIntro() {
 
-        Game.printHeading("Hero sees Red Spider. \n" + heroName + ": Oh my god what a disgusting spider this is.");
+        Game.printHeading("what a disgusting spider.");
+
     }
 
-    public static void room2Scenario(Hero hero,Monster monster,Location location,Room room,Items item){//item will be helmet
+
+
+
+
+    public static void room23Scenario(Hero hero,Monster monster,Location location,Room room,Items item){ //item will be helmet
+
         location.changeLocation(hero,location, room);
         location.displayLoc(hero);
-        Scenarios.floorSixteenRoomTwoIntro();
+        System.out.println(heroName+" sees STAIR and Lisa");
+        Game.printHeading("You: Wow Who are you ?\nI have never seen such a beautiful woman before. I can’t believe.");
+        Game.printHeading("Lisa: My my my my my my name is Liza.\n" +
+                "-If you free me from my chains, I will give you a helmet");
+
         int lisaChoice = Game.readInt("1- Untie the chains. \n2- Go up to second floor", 2);
         if (lisaChoice == 1) {
             System.out.println("Lisa gave you a helmet");
@@ -76,16 +76,21 @@ public class Scenarios {
                 hero.inventory.addAnItem(hero, item);
                 System.out.println("You added a helmet your inventory here your inventory.");
                 hero.inventory.displayInventory();
+                Game.anythingToContinue();
                 System.out.println("Lisa: Every good deed has a return.");
                 System.out.println("You: Oh my god Liza What did you do to me ");
                 monster.attack(hero);
+                Game.anythingToContinue();
+                System.out.println("You: Whatever I am much more profitable...\n ----------You are going up to second floor---------------");
+                Game.anythingToContinue();
 
 
             }
             else if (helmetChoice==2){
                 System.out.println("You did not take the helmet, who knows it may be a mistake :) ");
                 hero.inventory.displayInventory();
-                System.out.println("Go up to second floor");
+                System.out.println("You are going up to second floor");
+                Game.anythingToContinue();
 
 
             }
@@ -99,6 +104,65 @@ public class Scenarios {
 
         }
     }
+
+
+    public static void secondRoomsScenariosWithoutItem(Hero hero,Monster monster,Location location,Room room,Room newRoom){
+        location.changeLocation(hero,location, room);
+        location.displayLoc(hero);
+        System.out.println(heroName+" sees STAIR and "+monster.getName());
+
+        Game.attackOrChangeRoom(hero,monster,location,newRoom);
+
+        System.out.println(" gave you a helmet");
+        monster.getItems().displayItemInfo();
+        int itemChoice = Game.readInt(" \n1- Take it \n2- Leave it", 2);
+        if (itemChoice == 1) {
+            hero.inventory.addAnItem(hero, monster.getItems());
+            System.out.println("You added a"+monster.getItems().getName()+ "your inventory here your inventory.");
+            hero.inventory.displayInventory();
+            Game.anythingToContinue();
+
+
+
+            System.out.println("\n ----------You are going up to second floor---------------");
+            Game.anythingToContinue();
+
+
+        }
+        else if (itemChoice==2){
+            System.out.println("You did not take the"+ monster.getItems().getName() +"who knows it may be a mistake :) ");
+            hero.inventory.displayInventory();
+            System.out.println("\n ----------You are going up to second floor---------------");
+            Game.anythingToContinue();
+
+
+        }
+    }
+
+
+    public static void secondRoomsScenariosWithItem(Location location,Hero hero,Monster monster,Room room,Room newRoom,Items items){
+        location.changeLocation(hero,location, room);
+        location.displayLoc(hero);
+        System.out.println(heroName+" sees STAIR and "+monster.getName());
+
+        Game.attackOrChangeRoom(hero,monster,location,newRoom);
+
+        System.out.println();
+
+
+
+
+                System.out.println("\n ----------You are going up to second floor---------------");
+                Game.anythingToContinue();
+
+
+            }
+
+
+
+
+
+
 
     }
 

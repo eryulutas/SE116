@@ -38,71 +38,105 @@ public class Game {
     }
 
 
+    public static void attackOrChangeRoom(Hero hero,Monster monster,Location location,Room newRoom) {
 
-    /*public static void choices(Location location,Room room,Monster monster) {
-        int roomChoice = Game.readInt("1. Room-1 \n2. Room-2", 2);
+        String attackChoice = Game.readString("<ATTACK> -Attack To Monster: ", monster, "<ROOM> -GO TO OTHER ROOM");
+        if (attackChoice.matches("(.*)ATTACK(.*)") || attackChoice.matches("(.*)attack(.*)")) {
+            Game.battle(hero, monster);
+            if (monster.getItems() != null) {
+                System.out.println(monster.getItems().getName()+" dropped from "+monster.getName());
+                monster.getItems().displayItemInfo();
+                int itemChoice = Game.readInt(" \n1- Take it \n2- Leave it", 2);
+                if (itemChoice == 1) {
+                    if(monster.getItems().getMainType()=="attack item"||monster.getItems().getMainType()=="boot"||monster.getItems().getMainType()=="armor"){
+                        hero.inventory.changeItem(monster.getItems());
+                    }
+                    else{
+                        hero.inventory.addAnItem(hero, monster.getItems());
+                    }
 
-        if (roomChoice == 1) {
-            location.changeLocation(location, room);
-            location.displayLoc(selectedHero);
-            Scenarios.floorSixteenRoomOneIntro();
 
-            String attackChoice = Game.readString("<ATTACK> -Attack To Monster: ", monster, "<OTHER ROOM> -GO TO OTHER ROOM");
+                    System.out.println("You added a" + monster.getItems().getName() + "your inventory here your inventory.");
+                    hero.inventory.displayInventory();
 
-            if (attackChoice.matches("(.*)ATTACK(.*)") || attackChoice.matches("(.*)attack(.*)")) {
-                battle(monster);
-
-
+                } else if (itemChoice == 2) {
+                    System.out.println("You did not take the" + monster.getItems().getName() + "who knows it may be a mistake :) ");
+                    hero.inventory.displayInventory();
+                    System.out.println("\n ----------You are going up to second floor---------------");
+                    Game.anythingToContinue();
 
 
-            } else if (attackChoice.matches("(.*)Room2||room2||ROOM2||ROOM 2||room 2(.*)")) {
-                if (selectedHero == assassin) {
-                    currentLocation.changeLocation(currentLocation, room14_Assassin);
-
-                } else if (selectedHero == archer) {
-                    currentLocation.changeLocation(currentLocation, room14_Archer);
-                } else if (selectedHero == tank) {
-                    currentLocation.changeLocation(currentLocation, room14_Tank);
                 }
+            }
 
 
-                currentLocation.displayLoc(selectedHero);
+
+                Game.clearConsole();
+                System.out.println("You: That was easy, now we will see what is behind other room");
+                Game.anythingToContinue();
+                location.changeLocation(hero, location, newRoom);
+
+
+            } else if (attackChoice.matches("(.*)Room||room||ROOM||RooM(.*)")) {
+
+                location.changeLocation(hero, location, newRoom);
+                Game.anythingToContinue();
             }
 
         }
-    } */
 
-    public static void              battle(Hero hero,Monster monster) {
+
+
+
+    public static void battle(Hero hero,Monster monster) {
         monster.displayInfo();
+        hero.displayInfo();
         hero.attack(monster);
         Game.anythingToContinue();
-        monster.attack(hero);
+        if(monster.getHealthPoints()>0 && hero.getHealthPoints()>0) {
 
 
-        boolean finishBattle=true;
-        while (finishBattle) {
-            int input = readInt("1. Continue to Attack \n2. Finish Battle", 2);
-            if (input == 1) {
-                hero.attack(monster);
-                Game.anythingToContinue();
-                monster.attack(hero);
-                if(monster.getHealthPoints()<=0){
+            boolean finishBattle = true;
+            while (finishBattle) {
+                int input = readInt("1. Continue to Attack \n2. Finish Battle", 2);
+                if (input == 1) {
 
-                    finishBattle=false;
+
+                    if (monster.getHealthPoints() <= 0) {
+                        System.out.println("Your already killed the monster!");
+                        monster.setHealthPoints(0);
+                        monster.displayInfo();
+                        Game.anythingToContinue();
+
+                        finishBattle = false;
+                    }
+                    else if(monster.getHealthPoints()>0 && hero.getHealthPoints()<=0){
+                        hero.setHealthPoints(0);
+                        System.out.println("You died.");
+                        finishBattle=false;
+
+                    }
+                    else {
+                        monster.attack(hero);
+                        hero.attack(monster);
+                        Game.anythingToContinue();
+
+                        finishBattle = true;
+                    }
                 }
-                else{
-                    finishBattle=true;
-                }
-            }
-            else if(input==2){
-                finishBattle=false;
 
-            }
-            else {
-                System.out.println("Please enter the number which are given to you");
+                else if (input == 2) {
+                    finishBattle = false;
+
+                }
+                else {
+                    System.out.println("Please enter the number which are given to you");
+                }
             }
         }
-    }
+
+        }
+
 
 
 
@@ -136,17 +170,7 @@ public class Game {
 
 
 
-    public static void actions() {
 
-        System.out.println("The hero sees the following.");
-        System.out.println("Go To Next Room Door (D1)");
-        System.out.println("Back To Before Room Door (D2)");
-        System.out.println("Stairs (UP)");
-        System.out.println("Attack To Monster (M1)");
-        System.out.println("Attack To Monster (M2)");
-        System.out.println("Rescue Townspeople (R)");
-        System.out.println("Please select one");
-    }
 
 
 
