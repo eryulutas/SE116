@@ -15,26 +15,26 @@ public class Main {
 
 
         //Tank Items
-        Items swordShield = new Items("Sword-Shield", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items shortSword = new Items("Short Sword", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items longSword = new Items("Long Sword", 15, 3, 2, 0, 5, "attack item", "dfhjdasj");
+        Items swordShield = new Items("Sword-Shield", 20, 1, 0, 0, 4, "attack item", "adsasdasd");
+        Items shortSword = new Items("Short Sword", 17, 1, 0, 0, 5, "attack item", "adsasdasd");
+        Items longSword = new Items("Long Sword", 25, 1, 0, 0, 7, "attack item", "dfhjdasj");
 
 
         // Assassin Items
-        Items dagger = new Items("Dagger", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items machetes = new Items("Machetes", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items throwingKnife = new Items("Throwing Knife", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items dagger = new Items("Dagger", 19, 2, 0, 0, 3, "attack item", "adsasdasd");
+        Items machetes = new Items("Machetes", 18, 2, 0, 0, 3, "attack item", "adsasdasd");
+        Items throwingKnife = new Items("Throwing Knife", 15, 2, 0, 0, 3, "attack item", "adsasdasd");
 
 
         //Archer Items
-        Items longRangeBow = new Items("Long Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items shortRangeBow = new Items("Short Range Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
-        Items Crossbow = new Items("Cross Bow", 7, 1, 3, 0, 4, "attack item", "adsasdasd");
+        Items longRangeBow = new Items("Long Range Bow", 17, 3, 0, 0, 7, "attack item", "adsasdasd");
+        Items shortRangeBow = new Items("Short Range Bow", 18, 2, 0, 0, 6, "attack item", "adsasdasd");
+        Items Crossbow = new Items("Cross Bow", 26, 1, 0, 0, 9, "attack item", "adsasdasd");
 
         //Armors
-        Items lightArmor = new Items("Light Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items heavyArmor = new Items("Heavy Armor", 7, 1, 3, 0, 4, "armor", "adsasdasd");
-        Items heavyBoots = new Items("Heavy Boots", 7, 1, 3, 0, 4, "armor", "adsasdasd");
+        Items lightArmor = new Items("Light Armor", 0, 2, 5, 0, 7, "armor", "adsasdasd");
+        Items heavyArmor = new Items("Heavy Armor", 0, 1, 7, 0, 11, "armor", "adsasdasd");
+        Items heavyBoots = new Items("Heavy Boots", 0, 1, 3, 0, 5, "armor", "adsasdasd");
         Items basicBoot = new Items("Boots", 1, 2, 5, 0, 3, "armor", "sadasdasd");
 
 
