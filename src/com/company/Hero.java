@@ -6,7 +6,7 @@ public class Hero extends Character<Monster> {
     private int armor;
     private String type;
     Inventory inventory;
-    private int level; // UNUTMA
+    private int level;
 
 
     public Hero(String name, int healthPoints, int maxHealthPoints, int attackDamage, int attackSpeed, int armor, String type, int level, Inventory inventory) {

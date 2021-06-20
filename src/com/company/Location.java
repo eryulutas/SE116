@@ -31,8 +31,6 @@ public class Location {
             oldLocation.setHeroLevel(hero.getLevel() + 1);
 
 
-
-
         }
 
         else{

@@ -152,18 +152,18 @@ public class Scenarios {
 
 
 
-                System.out.println("\n ----------You are going up to second floor---------------");
-                Game.anythingToContinue();
-
-
-            }
-
-
-
-
-
+        System.out.println("\n ----------You are going up to second floor---------------");
+        Game.anythingToContinue();
 
 
     }
+
+
+
+
+
+
+
+}
 
 
